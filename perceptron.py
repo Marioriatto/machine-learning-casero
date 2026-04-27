@@ -2,14 +2,14 @@ from tkinter import *
 from math import sqrt
 import random
 
-def generate_separable_data(n_points:int, margin:float = 0.1):
+def generate_separable_data(n_points:int, margin:float = 0.01):
     data = []
     m = random.uniform(-1,1)
     b = random.uniform(-0.05,0.05)
 
     while len(data) < n_points:
-        x = random.uniform(-1, 1)
-        y = random.uniform(-1, 1)
+        x = random.uniform(-0.7, 0.7)
+        y = random.uniform(-0.7, 0.7)
         dist = abs(y - (m*x + b)) 
 
         if dist > margin:
@@ -50,7 +50,6 @@ class Perceptron:
          if sample[target]*(sample[y]-(self.w * sample[x])) <= 0:
              self.error = True
              self.w -= self.learning_rate * sample[target] * sample[x]
-             self.b += self.learning_rate * sample[target] * (self.radius ** 2)
              self.steps += 1
     def draw(self):
         x = 0
